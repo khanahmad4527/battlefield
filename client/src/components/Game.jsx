@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import { Button } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Button } from "@chakra-ui/react";
 import io from "socket.io-client";
 import tileset from "../assets/images/tileset.png";
 import soldier from "../assets/images/soldier.png";
 import speaker from "../assets/images/speaker.png";
 import AgoraRTC from "agora-rtc-sdk-ng";
+import Chat from "./Chat";
 
 function Game() {
   //define reference for socket and canvas
   const canvasRef = useRef(null);
   const socketRef = useRef(null);
+  const [chat, setChat] = useState([]);
 
   //useEffect to setup socket to mount and demount
   useEffect(() => {
@@ -56,7 +58,7 @@ function Game() {
       if (isPlaying) {
         localTracks.audioTrack.setEnabled(false);
         muteButton.innerText = "unmute";
-        socketRef.current.emit("mute", true);
+        socketRef.current.emit("mute", false);
       } else {
         localTracks.audioTrack.setEnabled(true);
         muteButton.innerText = "mute";
@@ -134,7 +136,9 @@ function Game() {
     socketRef.current.on("bullets", (serverBullets) => {
       bullets = serverBullets;
     });
-
+    socketRef.current.on("msg", (msg) => {
+      setChat([...chat, ...msg]);
+    });
     const inputs = {
       up: false,
       down: false,
@@ -285,11 +289,20 @@ function Game() {
     window.requestAnimationFrame(loop);
   }, []);
 
+  const chats = (msg) => {
+    setChat((prev) => {
+      socketRef.current.emit("chat", [...chat, msg]);
+      return [...prev, msg];
+    });
+  };
   return (
     <div>
-      <Button id="mute" bg="teal">
-        Mute
-      </Button>
+      <Box pos={"absolute"}>
+        <Button id="mute" bg="teal">
+          Mute
+        </Button>
+      </Box>
+      <Chat socket={socketRef} chatFun={chats} chat={chat} />
       <canvas ref={canvasRef} />
     </div>
   );
