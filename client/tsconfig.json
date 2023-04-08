@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "public/AgoraRTC_N-4.15.0.js"  ]
 }
