@@ -1,0 +1,27 @@
+.text{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    width: 120px;
+    padding: 10px;
+    font-size: 24px;
+    font-family: consolas;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.2s;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 10px;
+    
+}
+.text:hover{
+    color: #0d0b29 ;
+    background: white;
+    box-shadow: 0 0 10px white, 0 0 40px white, 0 0 10px white;
+    transition-delay: 9ms;
+}
