@@ -302,7 +302,7 @@ function Game() {
           Mute
         </Button>
       </Box>
-      <Chat socket={socketRef} chatFun={chats} chat={chat} />
+      <Chat chatFun={chats} chat={chat} />
       <canvas ref={canvasRef} />
     </div>
   );
