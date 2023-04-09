@@ -28,7 +28,8 @@ const Chat = ({ chat, chatFun }) => {
       <div className="p-1 text-center  text-lg ">
         {chat?.map((el, i) => {
           return (
-            <p key={i} className="p-1 bg-transparent">
+            <p key={i} className="p-1 m-1 bg-transparent bg-sky-500 rounded-full items-right"
+            style={{overflow:"hidden"}}>
               {el}
             </p>
           );
