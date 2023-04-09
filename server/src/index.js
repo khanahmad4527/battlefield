@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 const httpServer = createServer(app);
 
-const io = new Server(httpServer,{
+const io = new Server(httpServer, {
   cors: {
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
@@ -165,14 +165,17 @@ async function main() {
         playerId: socket.id,
       });
     });
-
+    socket.on("chat", (msg) => {
+      console.log(msg);
+      socket.broadcast.emit("msg", msg);
+    });
     socket.on("disconnect", () => {
       players = players.filter((player) => player.id !== socket.id);
     });
   });
 
   //app.use(express.static("public"));
-const PORT = 8080;
+  const PORT = 8080;
   httpServer.listen(PORT, () => {
     console.log(`Listening to server on PORT ${PORT}`);
   });
@@ -187,4 +190,3 @@ const PORT = 8080;
 }
 
 main();
-
