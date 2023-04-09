@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="bg-[url('https://unsplash.com/photos/90kRC3kiv54')] ">
       HomePage
       <Button onClick={() => navigate("/game")}>Game Page</Button>
     </div>
