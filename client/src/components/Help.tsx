@@ -52,7 +52,7 @@ const Help = () => {
           </tr>
       </tbody>
     </table>
-    <div style={{display:"flex",justifyContent:"center",gap:"10px",marginTop:"10px"}}>
+    <div style={{display:"flex",justifyContent:"center",gap:"10px",marginTop:"5px"}}>
     <p className='text'  onClick={() => navigate("/game")} >Play</p>
     <p className='text'  onClick={() => navigate("/")} >Back </p>
     </div>
