@@ -29,18 +29,19 @@ const Home = () => {
       <input
         type="text"
         placeholder="Enter Player Name"
-        className="border-1 rounded-md border-l-rose-600 p-2"
+        className="border-1 rounded-md border-l-rose-600 p-3 mb-2"
         value={player}
         onChange={(e) => {
           setPlayer(e.target.value);
         }}
+        required
       />
       <button
         disabled={player == ""}
-        className="text cursor-pointer"
+        className="text cursor-pointer w-fit p-3"
         onClick={() => navigate(`/game?player=${player}`)}
       >
-        Start <AiOutlineRight />
+        {player == "" ? "Enter Name" : "Start"} <AiOutlineRight />
       </button>
       <p
         style={{ cursor: "pointer", textDecoration: "underline" }}
