@@ -1,15 +1,16 @@
-import React, { useEffect, useRef } from "react";
-import { Button } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import tileset from "../assets/images/tileset.png";
 import soldier from "../assets/images/soldier.png";
 import speaker from "../assets/images/speaker.png";
 import AgoraRTC from "agora-rtc-sdk-ng";
+import Chat from "./Chat";
 
 function Game() {
   //define reference for socket and canvas
   const canvasRef = useRef(null);
   const socketRef = useRef(null);
+  const [chat, setChat] = useState([]);
 
   //useEffect to setup socket to mount and demount
   useEffect(() => {
@@ -56,7 +57,7 @@ function Game() {
       if (isPlaying) {
         localTracks.audioTrack.setEnabled(false);
         muteButton.innerText = "unmute";
-        socketRef.current.emit("mute", true);
+        socketRef.current.emit("mute", false);
       } else {
         localTracks.audioTrack.setEnabled(true);
         muteButton.innerText = "mute";
@@ -134,7 +135,9 @@ function Game() {
     socketRef.current.on("bullets", (serverBullets) => {
       bullets = serverBullets;
     });
-
+    socketRef.current.on("msg", (msg) => {
+      setChat([...chat, ...msg]);
+    });
     const inputs = {
       up: false,
       down: false,
@@ -143,33 +146,69 @@ function Game() {
     };
 
     //key to move the players
+    // window.addEventListener("keydown", (e) => {
+    //   if (e.key === "w") {
+    //     inputs["up"] = true;
+    //   } else if (e.key === "s") {
+    //     inputs["down"] = true;
+    //   } else if (e.key === "d") {
+    //     inputs["right"] = true;
+    //   } else if (e.key === "a") {
+    //     inputs["left"] = true;
+    //   }
+    //   if (["a", "s", "w", "d"].includes(e.key) && walk.paused) {
+    //     walk.play();
+    //   }
+    //   socketRef.current.emit("inputs", inputs);
+    // });
+
+    // window.addEventListener("keyup", (e) => {
+    //   if (e.key === "w") {
+    //     inputs["up"] = false;
+    //   } else if (e.key === "s") {
+    //     inputs["down"] = false;
+    //   } else if (e.key === "d") {
+    //     inputs["right"] = false;
+    //   } else if (e.key === "a") {
+    //     inputs["left"] = false;
+    //   }
+    //   if (["a", "s", "w", "d"].includes(e.key)) {
+    //     walk.pause();
+    //     walk.currentTime = 0;
+    //   }
+    //   socketRef.current.emit("inputs", inputs);
+    // });
+
     window.addEventListener("keydown", (e) => {
-      if (e.key === "w") {
+      if (e.key === "ArrowUp" || e.key === " ") {
         inputs["up"] = true;
-      } else if (e.key === "s") {
+      } else if (e.key === "ArrowDown") {
         inputs["down"] = true;
-      } else if (e.key === "d") {
+      } else if (e.key === "ArrowRight") {
         inputs["right"] = true;
-      } else if (e.key === "a") {
+      } else if (e.key === "ArrowLeft") {
         inputs["left"] = true;
       }
-      if (["a", "s", "w", "d"].includes(e.key) && walk.paused) {
-        // walk.play();
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key) &&
+        walk.paused
+      ) {
+        walk.play();
       }
       socketRef.current.emit("inputs", inputs);
     });
 
     window.addEventListener("keyup", (e) => {
-      if (e.key === "w") {
+      if (e.key === "ArrowUp" || e.key === " ") {
         inputs["up"] = false;
-      } else if (e.key === "s") {
+      } else if (e.key === "ArrowDown") {
         inputs["down"] = false;
-      } else if (e.key === "d") {
+      } else if (e.key === "ArrowRight") {
         inputs["right"] = false;
-      } else if (e.key === "a") {
+      } else if (e.key === "ArrowLeft") {
         inputs["left"] = false;
       }
-      if (["a", "s", "w", "d"].includes(e.key)) {
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
         walk.pause();
         walk.currentTime = 0;
       }
@@ -285,11 +324,22 @@ function Game() {
     window.requestAnimationFrame(loop);
   }, []);
 
+  const chats = (msg) => {
+    setChat((prev) => {
+      socketRef.current.emit("chat", [...chat, msg]);
+      return [...prev, msg];
+    });
+  };
   return (
-    <div>
-      <Button id="mute" bg="teal">
-        Mute
-      </Button>
+    <div style={{ backgroundColor: "black" }}>
+      <div className="absolute">
+        <button id="mute" className="bg-teal-500 px-4 py-2 rounded-md">
+          Mute
+        </button>
+      </div>
+
+      <Chat socket={socketRef} chatFun={chats} chat={chat} />
+
       <canvas ref={canvasRef} />
     </div>
   );
