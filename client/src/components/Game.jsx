@@ -18,7 +18,7 @@ function Game() {
   //useEffect to setup socket to mount and demount
 
   useEffect(() => {
-    socketRef.current = io.connect("ws://localhost:8080");
+    socketRef.current = io.connect("wss://battlefield-2w66.onrender.com");
     return () => {
       socketRef.current.disconnect();
     };
