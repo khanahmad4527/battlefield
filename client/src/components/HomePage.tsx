@@ -1,14 +1,55 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import HomeCard from "./Home.Card";
+// AiOutlineRight
+import { AiOutlineRight } from "react-icons/ai";
+import "./text.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const HomePage = () => {
+import AudioPlayer from "./AudioPlayer";
+const Home = () => {
   const navigate = useNavigate();
+  const [player, setPlayer] = useState("");
   return (
-    <div className="bg-[url('https://unsplash.com/photos/90kRC3kiv54')] ">
-      HomePage
-      <Button onClick={() => navigate("/game")}>Game Page</Button>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        background:
+          "linear-gradient(90deg, rgba(13,11,41,1) 32%, rgba(105,17,17,1) 77%, rgba(38,69,75,1) 100%)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
+      <HomeCard />
+      <input
+        type="text"
+        placeholder="Enter Player Name"
+        className="border-1 border-l-rose-600 p-2"
+        value={player}
+        onChange={(e) => {
+          setPlayer(e.target.value);
+        }}
+      />
+      <button
+        disabled={player == ""}
+        className="text cursor-pointer"
+        onClick={() => navigate(`/game?player=${player}`)}
+      >
+        Start <AiOutlineRight />
+      </button>
+      <p
+        style={{ cursor: "pointer", textDecoration: "underline" }}
+        onClick={() => navigate("/help")}
+      >
+        Need Help ?
+      </p>
+
+      <AudioPlayer />
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

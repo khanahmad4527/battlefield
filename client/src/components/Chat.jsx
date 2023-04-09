@@ -9,7 +9,7 @@ const Chat = ({ chat, chatFun }) => {
 
   return (
     <div className="p-2 text-white  absolute right-0">
-      <div className=" ">
+      <div className=" flex gap-2">
         <input
           className="p-2 rounded-lg outline-none text-black"
           type="text"

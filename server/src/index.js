@@ -13,7 +13,7 @@ const io = new Server(httpServer, {
     methods: ["GET", "POST"],
   },
 });
-
+const player = [];
 const loadMap = require("./loadMap");
 
 const SPEED = 5;
@@ -121,8 +121,6 @@ async function main() {
   ({ ground2D, decal2D } = await loadMap());
 
   io.on("connect", (socket) => {
-    //console.log("user connected", socket.id);
-
     inputsMap[socket.id] = {
       up: false,
       down: false,
@@ -135,7 +133,14 @@ async function main() {
       x: 800,
       y: 800,
     });
-
+    socket.on("connectedUser", (sok) => {
+      let myset = new Set([...player]);
+      console.log(myset);
+      if (!myset.has(sok)) {
+        player.push(sok);
+      }
+      io.emit("usrD", player);
+    });
     socket.emit("map", {
       ground: ground2D,
       decal: decal2D,
