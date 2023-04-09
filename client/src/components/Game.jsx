@@ -5,14 +5,18 @@ import soldier from "../assets/images/soldier.png";
 import speaker from "../assets/images/speaker.png";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import Chat from "./Chat";
+import { Navigate, useSearchParams } from "react-router-dom";
+import Players from "./Players";
 
 function Game() {
   //define reference for socket and canvas
   const canvasRef = useRef(null);
   const socketRef = useRef(null);
   const [chat, setChat] = useState([]);
-
+  const [serachParam, setSearchParam] = useSearchParams();
+  const [gmPlayer, setGmPlayer] = useState([]);
   //useEffect to setup socket to mount and demount
+
   useEffect(() => {
     socketRef.current = io.connect("ws://localhost:8080");
     return () => {
@@ -119,10 +123,21 @@ function Game() {
     const BULLET_RADIUS = 3;
 
     //socket to send response to backend
-    socketRef.current.on("connect", () => {
-      console.log("connected");
+    socketRef.current.on("connect", (sok) => {
+      // console.log("connected", sok);
+      setGmPlayer([]);
+      socketRef.current.emit(
+        "connectedUser",
+        serachParam.get("player") || "guest"
+      );
     });
-
+    // socketRef.current.emit(
+    //   "connectedUser",
+    //   serachParam.get("player") || "guest"
+    // );
+    socketRef.current.on("usrD", (sok) => {
+      setGmPlayer(sok);
+    });
     socketRef.current.on("map", (loadedMap) => {
       groundMap = loadedMap.ground;
       decalMap = loadedMap.decal;
@@ -337,8 +352,8 @@ function Game() {
           Mute
         </button>
       </div>
-
-      <Chat socket={socketRef} chatFun={chats} chat={chat} />
+      <Chat chatFun={chats} chat={chat} />
+      <Players player={gmPlayer} you={serachParam.get("player") || "guest"} />
 
       <canvas ref={canvasRef} />
     </div>

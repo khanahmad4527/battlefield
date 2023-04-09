@@ -1,27 +1,55 @@
 import React from "react";
 import HomeCard from "./Home.Card";
-import "./text.css";
+// AiOutlineRight
 import { AiOutlineRight } from "react-icons/ai";
+import "./text.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AudioPlayer from "./AudioPlayer";
+import "./text.css";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [player, setPlayer] = useState("");
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-900 via-red-500 to-green-500 flex flex-col items-center justify-center gap-10">
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        background:
+          "linear-gradient(90deg, rgba(13,11,41,1) 32%, rgba(105,17,17,1) 77%, rgba(38,69,75,1) 100%)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "10px",
+      }}
+    >
       <HomeCard />
-      <p
-        className="text text-white text-lg font-bold uppercase tracking-wider flex items-center gap-2 cursor-pointer"
-        onClick={() => navigate("/game")}
+      <input
+        type="text"
+        placeholder="Enter Player Name"
+        className="border-1 rounded-md border-l-rose-600 p-2"
+        value={player}
+        onChange={(e) => {
+          setPlayer(e.target.value);
+        }}
+      />
+      <button
+        disabled={player == ""}
+        className="text cursor-pointer"
+        onClick={() => navigate(`/game?player=${player}`)}
       >
         Start <AiOutlineRight />
-      </p>
+      </button>
       <p
-        className="text-white cursor-pointer underline"
+        style={{ cursor: "pointer", textDecoration: "underline" }}
         onClick={() => navigate("/help")}
+        className="text-white"
       >
         Need Help ?
       </p>
+
       <AudioPlayer />
     </div>
   );

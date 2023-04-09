@@ -28,8 +28,15 @@ const Chat = ({ chat, chatFun }) => {
       <div className="p-1 text-center  text-lg ">
         {chat?.map((el, i) => {
           return (
-            <p key={i} className="p-1 m-1  rounded-full items-right"
-            style={{overflow:"hidden",backgroundColor:"#14b8a6",fontFamily:"sans-serif"}}>
+            <p
+              key={i}
+              className="p-1 m-1  rounded-full items-right"
+              style={{
+                overflow: "hidden",
+                backgroundColor: "#14b8a6",
+                fontFamily: "sans-serif",
+              }}
+            >
               {el}
             </p>
           );
