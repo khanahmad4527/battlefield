@@ -5,13 +5,14 @@ import soldier from "../assets/images/soldier.png";
 import speaker from "../assets/images/speaker.png";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import Chat from "./Chat";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Players from "./Players";
 
 function Game() {
   //define reference for socket and canvas
   const canvasRef = useRef(null);
   const socketRef = useRef(null);
+  const navigate = useNavigate();
   const [chat, setChat] = useState([]);
   const [serachParam, setSearchParam] = useSearchParams();
   const [gmPlayer, setGmPlayer] = useState([]);
@@ -152,6 +153,12 @@ function Game() {
     });
     socketRef.current.on("msg", (msg) => {
       setChat([...chat, ...msg]);
+    });
+    socketRef.current.on("ended", (user) => {
+      let usr = serachParam.get("player") || "guest";
+      if (user == usr) {
+        navigate("/");
+      }
     });
     const inputs = {
       up: false,
@@ -345,11 +352,17 @@ function Game() {
       return [...prev, msg];
     });
   };
+  const endGame = () => {
+    socketRef.current.emit("EndGame", serachParam.get("player") || "guest");
+  };
   return (
     <div style={{ backgroundColor: "black" }}>
-      <div className="absolute">
+      <div className="absolute flex gap-2">
         <button id="mute" className="bg-teal-500 px-4 py-2 rounded-md">
           Mute
+        </button>
+        <button onClick={endGame} className="bg-teal-500 px-4 py-2 rounded-md">
+          End Game
         </button>
       </div>
       <Chat chatFun={chats} chat={chat} />

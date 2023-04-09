@@ -13,7 +13,7 @@ const io = new Server(httpServer, {
     methods: ["GET", "POST"],
   },
 });
-const player = [];
+let player = [];
 const loadMap = require("./loadMap");
 
 const SPEED = 5;
@@ -145,7 +145,11 @@ async function main() {
       ground: ground2D,
       decal: decal2D,
     });
-
+    socket.on('EndGame',(user)=>{
+      player=player?.filter((el)=>el!==user)
+       io.emit("usrD", player);
+       socket.emit("ended",user); 
+    })
     socket.on("inputs", (inputs) => {
       inputsMap[socket.id] = inputs;
     });
