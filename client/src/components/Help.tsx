@@ -1,64 +1,90 @@
-import React from 'react'
-import HelpCard from './Help.Card'
+import React from "react";
+import HelpCard from "./Help.Card";
 import { useNavigate } from "react-router-dom";
-import "./text.css";
-import { AiOutlineRight } from "react-icons/ai";
+import {
+  AiOutlineArrowDown,
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+  AiOutlineArrowUp,
+} from "react-icons/ai";
+
 const Help = () => {
-  // const thtd={
-  //   padding: "12px",
-  // textAlign: "left"
-  // }
   const navigate = useNavigate();
   return (
-    <div style={{width:"100%",height:"100vh",
-    background: "linear-gradient(90deg, rgba(13,11,41,1) 32%, rgba(105,17,17,1) 77%, rgba(38,69,75,1) 100%)",padding:"10px"}}>
-    <HelpCard/>
-    <table style={{border:"1px solid white",borderRadius:"15px",margin:"auto",width:"auto",borderCollapse:"collapse",marginTop:"10px"}}>
-      <thead>
-        <tr>
-        <th style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Sr.No.</th>
-          <th style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Key</th>
-          <th style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Action</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-      
+    <div className="w-full bg-gradient-to-b from-purple-900 via-red-700 to-blue-500 p-10 text-white">
+      <HelpCard />
+      <table className="border-2 border-white rounded-md mx-auto w-auto border-collapse mt-10">
+        <thead>
           <tr>
-          <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>1</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>"a"</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Press a to move left</td>
+            <th className="p-4 text-left border-2 border-white">Sr.No.</th>
+            <th className="p-4 text-left border-2 border-white">Key</th>
+            <th className="p-4 text-left border-2 border-white">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="p-4 text-left border-2 border-white">1</td>
+            <td className="p-4 text-left border-2 border-white">
+              {<AiOutlineArrowLeft />}
+            </td>
+            <td className="flex items-center gap-1 p-4 text-left border-2 border-white">
+              Press <AiOutlineArrowLeft /> to move left{" "}
+            </td>
           </tr>
           <tr>
-          <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>2</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>"d"</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Press d to move right</td>
+            <td className="p-4 text-left border-2 border-white">2</td>
+            <td className="p-4 text-left border-2 border-white">
+              {<AiOutlineArrowRight />}
+            </td>
+            <td className="flex items-center gap-1 p-4 text-left border-2 border-white">
+              Press {<AiOutlineArrowRight />} to move right
+            </td>
           </tr>
           <tr>
-          <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>3</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>"w"</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Press w to move up</td>
-          </tr>
-
-          <tr>
-          <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>4</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>"s"</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>Press s to move down</td>
+            <td className="p-4 text-left border-2 border-white">3</td>
+            <td className="p-4 text-left border-2 border-white">
+              <AiOutlineArrowUp />
+            </td>
+            <td className="flex items-center gap-1 p-4 text-left border-2 border-white">
+              Press <AiOutlineArrowUp /> to move up
+            </td>
           </tr>
           <tr>
-          <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>5</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>"hover mouse pointer"</td>
-            <td style={{padding:"12px",textAlign:"left",border:"1px solid white"}}>direct your mouse pointer you want <br/>to shoot and press left click</td>
+            <td className="p-4 text-left border-2 border-white">4</td>
+            <td className="p-4 text-left border-2 border-white">
+              <AiOutlineArrowDown />{" "}
+            </td>
+            <td className="flex items-center gap-1 p-4 text-left border-2 border-white">
+              Press <AiOutlineArrowDown /> to move down
+            </td>
           </tr>
-      </tbody>
-    </table>
-    <div style={{display:"flex",justifyContent:"center",gap:"10px",marginTop:"10px"}}>
-    <p className='text'  onClick={() => navigate("/game")} >Play</p>
-    <p className='text'  onClick={() => navigate("/")} >Back </p>
+          <tr>
+            <td className="p-4 text-left border-2 border-white">5</td>
+            <td className="p-4 text-left border-2 border-white">
+              "hover mouse pointer"
+            </td>
+            <td className="p-4 text-left border-2 border-white">
+              Direct your mouse pointer you want to shoot and press left click
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className="flex justify-center gap-10 mt-10">
+        <button
+          className="text-white bg-green-500 rounded-lg py-2 px-4 hover:bg-green-600 transition-colors"
+          onClick={() => navigate("/game")}
+        >
+          Play
+        </button>
+        <button
+          className="text-white bg-gray-500 rounded-lg py-2 px-4 hover:bg-gray-600 transition-colors"
+          onClick={() => navigate("/")}
+        >
+          Back
+        </button>
+      </div>
     </div>
-  
-    </div>
-  )
-}
+  );
+};
 
-export default Help
+export default Help;

@@ -9,7 +9,7 @@ const Chat = ({ chat, chatFun }) => {
 
   return (
     <div className="p-2 text-white  absolute right-0">
-      <div className=" flex gap-2">
+      <div className="flex flex-row gap-10">
         <input
           className="p-2 rounded-lg outline-none text-black"
           type="text"
@@ -28,7 +28,15 @@ const Chat = ({ chat, chatFun }) => {
       <div className="p-1 text-center  text-lg ">
         {chat?.map((el, i) => {
           return (
-            <p key={i} className="p-1 bg-transparent">
+            <p
+              key={i}
+              className="p-1 m-1  rounded-full items-right"
+              style={{
+                overflow: "hidden",
+                backgroundColor: "#14b8a6",
+                fontFamily: "sans-serif",
+              }}
+            >
               {el}
             </p>
           );

@@ -29,7 +29,7 @@ const Home = () => {
       <input
         type="text"
         placeholder="Enter Player Name"
-        className="border-1 border-l-rose-600 p-2"
+        className="border-1 rounded-md border-l-rose-600 p-2"
         value={player}
         onChange={(e) => {
           setPlayer(e.target.value);
@@ -45,6 +45,7 @@ const Home = () => {
       <p
         style={{ cursor: "pointer", textDecoration: "underline" }}
         onClick={() => navigate("/help")}
+        className="text-white"
       >
         Need Help ?
       </p>
