@@ -6,6 +6,8 @@ import "./text.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AudioPlayer from "./AudioPlayer";
+import "./text.css";
+
 const Home = () => {
   const navigate = useNavigate();
   const [player, setPlayer] = useState("");
