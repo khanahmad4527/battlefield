@@ -11,7 +11,13 @@ import {
 const Help = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full bg-gradient-to-b from-purple-900 via-red-700 to-blue-500 p-10 text-white">
+    <div
+      className="h-screen p-10 text-white"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(13,11,41,1) 32%, rgba(105,17,17,1) 77%, rgba(38,69,75,1) 100%)",
+      }}
+    >
       <HelpCard />
       <table className="border-2 border-white rounded-md mx-auto w-auto border-collapse mt-10">
         <thead>
