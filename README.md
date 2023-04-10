@@ -40,7 +40,7 @@
 <h3 align="center"><a href="https://battlefield-one.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
-Nearbuy Clone is MERN Stack web application that allows you to buy voucher and coupons. It has a variety of categories, just visit the product listing page and you will see all the services near your location, in just a few clicks you can buy any products from the website. This project is just for educational purpose.
+Battlefield is MERN Stack game application that allows you to play multiplayer game with voice chat and text chat.
 
 <br />
 
