@@ -101,7 +101,7 @@ The project repository can be found in [GitHub link](https://github.com/ArjunSin
 ```
 Using HTTPS
 
-# git clone https://github.com/KaustubhN12/dizzy-stitch-9009.git
+# git clone https://github.com/khanahmad4527/battlefield.git
 ```
  
 
