@@ -63,7 +63,7 @@ Nearbuy Clone is MERN Stack web application that allows you to buy voucher and c
 ## Glimpses of Nearbuy clone 🙈 :
 
 
-<div width="100%">
+<div align="center">
     <img src="https://i.ibb.co/JBQGzZL/Screenshot-2104.png"  alt="home" />
     <img src="https://i.ibb.co/hRb8bnK/Screenshot-2105.png"   alt="help" />
     <img src="https://i.ibb.co/bWZ0w9r/Screenshot-2106.png"  alt="chat" />
