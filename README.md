@@ -1,7 +1,5 @@
 <h1 align="center">Battlefield</h1>
 
-<h3 align="center" id="title">unique name :- DoorStep</h3>
-
 <h3 align="center">It's a MERN Stack multiplayer game application with voice and text chat functionalities</h3>
 
 <h5>* fw22_0440 - Kaustubh Nawade<br>* fw22_0044 - Devesh Kumar Mishra <br>* fw21_1157 - Khan Ahmad Iftekhar Ahmad <br>* 	fw21_0930 - akash singha <br>
