@@ -60,7 +60,7 @@ Battlefield is MERN Stack game application that allows you to play multiplayer g
 
 <br />
 
-## Glimpses of Nearbuy clone 🙈 :
+## Glimpses of Battlefield 🙈 :
 
 
 <div align="center">
