@@ -39,7 +39,7 @@
 
 
 
-<h3 align="center"><a href="https://doorstep-iota.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://battlefield-one.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
 Nearbuy Clone is MERN Stack web application that allows you to buy voucher and coupons. It has a variety of categories, just visit the product listing page and you will see all the services near your location, in just a few clicks you can buy any products from the website. This project is just for educational purpose.
@@ -48,24 +48,17 @@ Nearbuy Clone is MERN Stack web application that allows you to buy voucher and c
 
 ## Screens 
 - Homepage / Landing Page
-- services Listing Page 
-- service Description Page
-- order Management Page
-- Checkout Management Page
-- Login / Logout Page
-- Signup Page
-- Admin page
-
+- Guide/Help Page
+- Battelfield page
 
 <br />
 
 
 ## 🚀 Features
-- Login and Signup User Account
-- JWT (Json Web Token) Authentication and BcryptJS Password Hashing 
-- All category Add and Remove Items 
-- Order Update Quantities 
- 
+- join with your name
+- Multiplayer
+- chatting with players
+- voice chat
 
 <br />
 
