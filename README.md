@@ -65,16 +65,16 @@ Nearbuy Clone is MERN Stack web application that allows you to buy voucher and c
 
 <table>
   <tr>
-    <td><img src="https://i.ibb.co/s5rJkz8/Screenshot-2080.png" alt="home" /></td>
-    <td><img src="https://i.ibb.co/B2673rL/Screenshot-2081.png"  alt="coupons" /></td>
+    <td><img src="https://i.ibb.co/JBQGzZL/Screenshot-2104.png"  alt="home" /></td>
+    <td><img src="https://i.ibb.co/hRb8bnK/Screenshot-2105.png"   alt="help" /></td>
   </tr>
   
   <tr>
-    <td><img src="https://i.ibb.co/4Sw5vXY/Screenshot-2082.png" alt="allProducts" /></td>
-    <td><img src="https://i.ibb.co/f0fMRD0/Screenshot-2083.png"  alt="men" /></td>
+    <td><img src="https://i.ibb.co/bWZ0w9r/Screenshot-2106.png"  alt="chat" /></td>
+    <td><img src="https://i.ibb.co/48fSzzz/Screenshot-2107.png"  alt="men" /></td>
   </tr>
   <tr>
-    <td><img src="https://i.ibb.co/09gp7X8/Screenshot-2084.png"  alt="women" /></td>
+    <td><img src="https://i.ibb.co/RQg1DYX/Screenshot-2108.png"   alt="fire" /></td>
     <td><img src="https://i.ibb.co/7r2H2LZ/Screenshot-2085.png"  alt="kids" /></td>
   </tr>
   <tr>
