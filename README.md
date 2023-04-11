@@ -2,7 +2,7 @@
 
 <h3 align="center">It's a MERN Stack multiplayer game application with voice and text chat functionalities</h3>
 
-<h5>* fw22_0440 - Kaustubh Nawade<br>* fw22_0044 - Devesh Kumar Mishra <br>* fw21_1157 - Khan Ahmad Iftekhar Ahmad <br>* 	fw21_0930 - akash singha <br>
+<h5>* fw22_0440 - Kaustubh Nawade<br>* fw22_0044 - Devesh Kumar Mishra <br>* fw21_1157 - Khan Ahmad Iftekhar Ahmad <br>* 	fw21_0930 - Akash Singha <br>
 
 <h2 align="center">🖥️ Tech Stack</h2>
 
